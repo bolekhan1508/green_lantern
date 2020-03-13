@@ -161,4 +161,10 @@ def simple_sort(data: List[int]) -> List[list]:
         simple_sort([2, 9, 6, 7, 3, 2, 1])
         >>> [1, 2, 2, 3, 6, 7, 9]
     """
-    return sorted(data)
+    chek = 1
+    while chek < len(data):
+        for i in range(len(data) - chek):
+            if data[i] > data[i + 1]:
+                data[i], data[i + 1] = data[i + 1], data[i]
+        chek += 1
+    return data
