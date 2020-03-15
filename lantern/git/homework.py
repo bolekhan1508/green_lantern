@@ -42,17 +42,18 @@ def multiple_ints(first_value: int, second_value: int) -> int:
     Raises:
         TypeError
 
+    Vasya loh
+
     Params:
         first_value: value for multiply
         second_value
     Returns:
         Product of elements
     """
-    x = first_value * second_value
-    if not type(x) is int:
-        raise TypeError
+    if isinstance(first_value, int) and isinstance(second_value, int):
+        return first_value*second_value
     else:
-        return x
+        raise TypeError
 
 
 def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
@@ -107,22 +108,15 @@ def is_word_in_text(word: str, text: str) -> bool:
         >>> False
 
     """
-    if word in text:
-        return True
-    else:
-        return False
+    return  word in text
+
 
 
 def some_loop_exercise() -> list:
     """
     Use loop to create list that contain int values from 0 to 12 except 6 and 7
     """
-    arr = []
-    for i in range(13):
-        if i != 6 and i != 7:
-            arr.append(i)
-    return arr
-
+    return [i for i in range(13) if i != 6 and i != 7]
 
 def remove_from_list_all_negative_numbers(data: List[int]) -> list:
     """
@@ -133,11 +127,7 @@ def remove_from_list_all_negative_numbers(data: List[int]) -> list:
         remove_from_list_all_negative_numbers([1, 5, -7, 8, -1])
         >>> [1, 5, 8]
     """
-    arr = []
-    for i in data:
-        if i >= 0:
-            arr.append(i)
-    return arr
+    return [i for i in data if i > 0]
 
 
 def alphabet() -> dict:
@@ -148,10 +138,8 @@ def alphabet() -> dict:
         alphabet()
         >>> {"a": 1, "b": 2 ...}
     """
-    dict = {}
-    for i in range(1, 27):
-        dict.update({i: chr(i + 96)})
-    return dict
+
+    return {i: chr(i + 96) for i in range(1, 27)}
 
 
 def simple_sort(data: List[int]) -> List[list]:
