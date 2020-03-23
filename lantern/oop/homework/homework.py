@@ -141,7 +141,10 @@ class Wall:
         return self.width * self.height
 
     def number_of_rolls_of_wallpaper(self, roll_width_m, roll_length_m):
-        pass
+        lines_in_roll = roll_length_m // self.height
+        count_of_lines = self.width // roll_width_m
+
+        return count_of_lines / lines_in_roll
 
 
 class Roof:
@@ -226,9 +229,9 @@ class Door:
     def update_metal_price(self, new_price):
         self.metal_price = new_price
 
-    def zero_value_check_width_and_height(width, height):
-        if width <= 0 or height <= 0:
-            raise ValueError('Value must be not 0')
+def zero_value_check_width_and_height(width, height):
+    if width <= 0 or height <= 0:
+        raise ValueError('Value must be not 0')
 
 class House:
     """
@@ -346,9 +349,8 @@ class House:
         return self.__door.door_square()
 
     def get_number_of_rolls_of_wallpapers(self, roll_width_m, roll_length_m):
-        if roll_width_m == 0 or roll_length_m == 0:
-            raise ValueError('Sorry length must be not 0')
-        return sum(wall.number_of_rolls_of_wallpaper(roll_width_m, roll_length_m) for wall in self.__walls)
+        zero_value_check_width_and_height(roll_width_m, roll_length_m)
+        return sum([i.number_of_rolls_of_wallpaper(roll_width_m, roll_length_m) for i in self.__walls])
 
     def get_room_square(self):
         return self.get_walls_square() - self.get_windows_square() - self.get_door_square()
