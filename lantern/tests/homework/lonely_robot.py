@@ -22,7 +22,8 @@ class Robot:
         turns = {
             'N': 'W',
             'W': 'S',
-            'S': 'E'}
+            'S': 'E',
+            'E': 'N'}
 
         self.direction = turns[self.direction]
 
